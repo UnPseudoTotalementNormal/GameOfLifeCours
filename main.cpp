@@ -49,7 +49,7 @@ int main(int argc, char* argv[]){
 
     const int sizeX = 30;
     const int sizeY = 30;
-    const int maxIterations = 10;
+    const int maxIterations = 25;
     std::vector Grid(sizeX * sizeY, 0);
 
     std::vector initialAliveCellsIdx = { GetPos(Grid, 1, 2, sizeX), GetPos(Grid, 2, 3, sizeX), GetPos(Grid, 3, 1, sizeX), GetPos(Grid, 3, 2, sizeX), GetPos(Grid, 3, 3, sizeX) };
@@ -74,14 +74,14 @@ int main(int argc, char* argv[]){
                 int index = GetPos(Grid, x, y, sizeX);
                 if (Grid[index] == 0)
                 {
-                    if (aliveNeighbors == 3)
+                    if (aliveNeighbors == 3 && Grid[index] == 0)
                     {
                         cellsToRevive.push_back(index);
                     }
                 }
                 else
                 {
-                    if (aliveNeighbors != 2 && aliveNeighbors != 3)
+                    if (aliveNeighbors != 2 && aliveNeighbors != 3 && Grid[index] == 1)
                     {
                         cellsToKill.push_back(index);
                     }
